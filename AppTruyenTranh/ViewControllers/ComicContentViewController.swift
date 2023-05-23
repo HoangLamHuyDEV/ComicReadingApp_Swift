@@ -12,7 +12,7 @@ class ComicContentViewController: UIViewController,UITableViewDelegate,UITableVi
     let contentView = UIView()
     let tblComicContent = UITableView()
     
-    var data: comic?
+    var data: chapter?
     
     @IBOutlet weak var imgLogo: UIImageView!
     override func viewDidLoad() {
@@ -53,12 +53,12 @@ class ComicContentViewController: UIViewController,UITableViewDelegate,UITableVi
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        10
+        data!.images.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellComicID", for: indexPath) as! ComicTableViewCell
-        let url = URL(string: data!.image)
+        let url = URL(string: data!.images[indexPath.row])
         cell.imgComic.kf.setImage(with: url)
         return cell
     }

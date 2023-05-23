@@ -24,6 +24,8 @@
 		E5BBA2692A152CAC009DBA34 /* ComicContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BBA2682A152CAC009DBA34 /* ComicContentViewController.swift */; };
 		E5BBA2702A18AAF2009DBA34 /* ComicTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BBA26E2A18AAF2009DBA34 /* ComicTableViewCell.swift */; };
 		E5BBA2712A18AAF2009DBA34 /* ComicTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5BBA26F2A18AAF2009DBA34 /* ComicTableViewCell.xib */; };
+		E5F8E22E2A1CDFCF00305886 /* chapterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F8E22D2A1CDFCF00305886 /* chapterModel.swift */; };
+		E5F8E2302A1CE08600305886 /* comicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F8E22F2A1CE08600305886 /* comicModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +47,8 @@
 		E5BBA2682A152CAC009DBA34 /* ComicContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicContentViewController.swift; sourceTree = "<group>"; };
 		E5BBA26E2A18AAF2009DBA34 /* ComicTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicTableViewCell.swift; sourceTree = "<group>"; };
 		E5BBA26F2A18AAF2009DBA34 /* ComicTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ComicTableViewCell.xib; sourceTree = "<group>"; };
+		E5F8E22D2A1CDFCF00305886 /* chapterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chapterModel.swift; sourceTree = "<group>"; };
+		E5F8E22F2A1CE08600305886 /* comicModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = comicModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +77,8 @@
 				E5BBA2682A152CAC009DBA34 /* ComicContentViewController.swift */,
 				E5BBA26E2A18AAF2009DBA34 /* ComicTableViewCell.swift */,
 				E5BBA26F2A18AAF2009DBA34 /* ComicTableViewCell.xib */,
+				E5F8E22D2A1CDFCF00305886 /* chapterModel.swift */,
+				E5F8E22F2A1CE08600305886 /* comicModel.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -187,12 +193,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				E5137A632A0AA2DB0053C4F1 /* HomeViewController.swift in Sources */,
+				E5F8E22E2A1CDFCF00305886 /* chapterModel.swift in Sources */,
 				E5BBA2702A18AAF2009DBA34 /* ComicTableViewCell.swift in Sources */,
 				E5AFAD2C2A09634500D8DF0E /* ViewController.swift in Sources */,
 				E5399E2B2A0C6DAB00F5132A /* ComicCollectionViewCell.swift in Sources */,
 				E5AFAD282A09634500D8DF0E /* AppDelegate.swift in Sources */,
 				E5137A602A0A5DE70053C4F1 /* SignUpViewController.swift in Sources */,
 				E5BBA2662A139FA0009DBA34 /* ChapterTableViewCell.swift in Sources */,
+				E5F8E2302A1CE08600305886 /* comicModel.swift in Sources */,
 				E5BBA2692A152CAC009DBA34 /* ComicContentViewController.swift in Sources */,
 				E5AFAD2A2A09634500D8DF0E /* SceneDelegate.swift in Sources */,
 				E5399E302A0C8F9E00F5132A /* RatingComicCollectionViewCell.swift in Sources */,

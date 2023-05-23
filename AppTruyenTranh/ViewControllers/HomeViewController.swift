@@ -63,9 +63,9 @@ class HomeViewController: UIViewController,UICollectionViewDataSource,UICollecti
         if (collectionView == clvUpdatedComic){
             let cell = clvUpdatedComic.dequeueReusableCell(withReuseIdentifier: "cellComicID", for: indexPath) as! ComicCollectionViewCell
             cell.lblComicName.text = data[indexPath.row].name
-            cell.lblChapter.text = "Số chương: \(data[indexPath.row].chapter)"
+            cell.lblChapter.text = "Số chương: \(data[indexPath.row].chapters.count)"
             cell.lblRating.text = "Đánh giá: \(data[indexPath.row].rating)"
-            cell.lblUpdateDate.text = data[indexPath.row].updateDate
+            cell.lblUpdateDate.text = data[indexPath.row].chapters.last?.updateDate
             let comicImgURL = URL(string: data[indexPath.row].image)
             cell.imgComic.kf.setImage(with: comicImgURL)
             return cell
@@ -115,26 +115,92 @@ class HomeViewController: UIViewController,UICollectionViewDataSource,UICollecti
     }
     
     func createData () {
-        let fisrtComic = comic(name: "Truyện 1", chapter: 12, rating: 3.4, updateDate: "10/5/2023", image: "https://i.pinimg.com/originals/89/3a/ab/893aab40ec160f8bbe7c17dece1c9d4d.jpg")
-        let secondComic = comic(name: "Truyện 2", chapter: 20, rating: 4.5, updateDate: "11/5/2023", image: "https://i.pinimg.com/564x/18/c4/30/18c430a599ab62aebfcafd6382c7df27.jpg")
-        let thirdComic = comic(name: "Truyện 3", chapter: 122.5, rating: 3.4, updateDate: "5/5/2023", image: "https://i.pinimg.com/736x/ca/1d/0e/ca1d0e2825a7ca0522b0e4bd1249f0f9.jpg")
-        let fourthComic = comic(name: "Truyện 4", chapter: 12.5, rating: 4.4, updateDate: "7/5/2023", image: "https://i.pinimg.com/564x/2e/49/59/2e495968ad2fbb1e394f477e5ee78a10.jpg")
-        let fifthComic = comic(name: "Truyện 5", chapter: 78.5, rating: 3.9, updateDate: "1/5/2023", image: "https://i.pinimg.com/564x/d1/c5/48/d1c548e6b8c5371e048c7a93f5617b58.jpg")
-        let sixthComic = comic(name: "Truyện 6", chapter: 56.6, rating: 1.2, updateDate: "10/5/2023", image: "https://i.pinimg.com/564x/af/d3/9a/afd39a1f9a4b2a5858b9eec1a99ce6b8.jpg")
+        let fisrtChapterComic:[String] = ["https://i.pinimg.com/564x/34/51/f1/3451f1f51b4a4338cf1b1b1b81371e30.jpg","https://i.pinimg.com/564x/bf/8e/ae/bf8eae58f9ee14b39306e509eebe2bf2.jpg","https://i.pinimg.com/564x/e4/19/1d/e4191d3311e1e47365caf9d8f679fbb1.jpg","https://i.pinimg.com/564x/c4/e3/45/c4e3458a7f22700716acd0fb0598f7bc.jpg","https://i.pinimg.com/564x/44/5b/01/445b01db2aa8bf6766db32d04ef418bd.jpg","https://i.pinimg.com/564x/17/42/df/1742df472467d9dca6b2408a62a4a563.jpg"]
+        let secondChapterComic:[String] = ["https://i.pinimg.com/564x/bf/2d/68/bf2d68fb1c1457adcbcf9850ada25014.jpg","https://i.pinimg.com/564x/bf/2d/68/bf2d68fb1c1457adcbcf9850ada25014.jpg","https://i.pinimg.com/564x/34/51/f1/3451f1f51b4a4338cf1b1b1b81371e30.jpg","https://i.pinimg.com/564x/bf/8e/ae/bf8eae58f9ee14b39306e509eebe2bf2.jpg","https://i.pinimg.com/564x/e4/19/1d/e4191d3311e1e47365caf9d8f679fbb1.jpg","https://i.pinimg.com/564x/03/38/55/0338552776f2bcb4fc4aa915fe642833.jpg","https://i.pinimg.com/564x/44/5b/01/445b01db2aa8bf6766db32d04ef418bd.jpg","https://i.pinimg.com/564x/bf/2d/68/bf2d68fb1c1457adcbcf9850ada25014.jpg"]
+        let fisrtChapter = chapter(id: "1", name: "alololo", images: fisrtChapterComic, updateDate: "12-2-2023")
+        let secondChapter = chapter(id: "2", name: "hello world", images: secondChapterComic, updateDate: "2-3-2023")
+        let thirdChapter = chapter(id: "3", name: "nothing is matter", images: secondChapterComic, updateDate: "1-1-2020")
+        var fisrtComic = comic(id: "co1", name: "Truyện 1", rating: 2.4, image: "https://i.pinimg.com/564x/03/38/55/0338552776f2bcb4fc4aa915fe642833.jpg")
+        fisrtComic.chapters.append(secondChapter)
+        fisrtComic.chapters.append(fisrtChapter)
+        fisrtComic.chapters.append(secondChapter)
+        fisrtComic.chapters.append(fisrtChapter)
+        fisrtComic.chapters.append(thirdChapter)
+        fisrtComic.chapters.append(secondChapter)
+        
+        var secondComic = comic(id: "co2", name: "Truyện 2", rating: 4.5, image: "https://i.pinimg.com/564x/ee/f4/f7/eef4f7b4ea70155319ec4269b679c2f7.jpg")
+        secondComic.chapters.append(fisrtChapter)
+        secondComic.chapters.append(secondChapter)
+        secondComic.chapters.append(fisrtChapter)
+        secondComic.chapters.append(secondChapter)
+        secondComic.chapters.append(fisrtChapter)
+        secondComic.chapters.append(secondChapter)
+        secondComic.chapters.append(secondChapter)
+        secondComic.chapters.append(fisrtChapter)
+        
+        var thirdComic = comic(id: "co3", name: "Truyện 3", rating: 3.5, image: "https://i.pinimg.com/564x/dc/7b/76/dc7b76c5d55e5d9a1187b44140629a41.jpg")
+        thirdComic.chapters.append(thirdChapter)
+        thirdComic.chapters.append(fisrtChapter)
+        thirdComic.chapters.append(secondChapter)
+        thirdComic.chapters.append(fisrtChapter)
+        thirdComic.chapters.append(thirdChapter)
+        thirdComic.chapters.append(fisrtChapter)
+        thirdComic.chapters.append(secondChapter)
+        thirdComic.chapters.append(thirdChapter)
+        
+        var fourthComic = comic(id: "co4", name: "Truyện 4", rating: 1.5, image: "https://i.pinimg.com/564x/5a/50/77/5a5077badc077b7ab587ef7e30cfefdf.jpg")
+        fourthComic.chapters.append(fisrtChapter)
+        fourthComic.chapters.append(secondChapter)
+        fourthComic.chapters.append(fisrtChapter)
+        fourthComic.chapters.append(secondChapter)
+        fourthComic.chapters.append(thirdChapter)
+        fourthComic.chapters.append(fisrtChapter)
+        fourthComic.chapters.append(thirdChapter)
+        fourthComic.chapters.append(fisrtChapter)
+        fourthComic.chapters.append(fisrtChapter)
+        fourthComic.chapters.append(fisrtChapter)
+        fourthComic.chapters.append(thirdChapter)
+        fourthComic.chapters.append(fisrtChapter)
+        fourthComic.chapters.append(fisrtChapter)
+        fourthComic.chapters.append(fisrtChapter)
+        fourthComic.chapters.append(secondChapter)
+        fourthComic.chapters.append(secondChapter)
+        
+        var firthComic = comic(id: "co5", name: "Truyện 5", rating: 5.0, image: "https://i.pinimg.com/564x/b1/1b/58/b11b5857b662f0465ea1ddfe89d801a7.jpg")
+        firthComic.chapters.append(fisrtChapter)
+        firthComic.chapters.append(secondChapter)
+        firthComic.chapters.append(fisrtChapter)
+        firthComic.chapters.append(secondChapter)
+        firthComic.chapters.append(fisrtChapter)
+        firthComic.chapters.append(secondChapter)
+        firthComic.chapters.append(thirdChapter)
+        firthComic.chapters.append(thirdChapter)
+        firthComic.chapters.append(thirdChapter)
+        firthComic.chapters.append(secondChapter)
+        firthComic.chapters.append(fisrtChapter)
+        firthComic.chapters.append(secondChapter)
+        firthComic.chapters.append(secondChapter)
+        firthComic.chapters.append(fisrtChapter)
+        firthComic.chapters.append(secondChapter)
+        firthComic.chapters.append(secondChapter)
+        firthComic.chapters.append(fisrtChapter)
+        firthComic.chapters.append(secondChapter)
+        firthComic.chapters.append(secondChapter)
+        firthComic.chapters.append(fisrtChapter)
+        firthComic.chapters.append(secondChapter)
+        firthComic.chapters.append(secondChapter)
+        firthComic.chapters.append(thirdChapter)
+        
+        var sixthComic = comic(id: "co6", name: "Truyện 6", rating: 3.8, image: "https://i.pinimg.com/564x/f2/b5/12/f2b5125d6a5c2c7dd635e6ea8cb210cd.jpg")
+        sixthComic.chapters.append(fisrtChapter)
+        sixthComic.chapters.append(secondChapter)
         data.append(fisrtComic)
         data.append(secondComic)
         data.append(thirdComic)
         data.append(fourthComic)
-        data.append(fifthComic)
+        data.append(firthComic)
         data.append(sixthComic)
         clvUpdatedComic.reloadData()
     }
     
-}
-public struct comic {
-    var name: String
-    var chapter : Float
-    var rating : Float
-    var updateDate : String
-    var image : String
 }

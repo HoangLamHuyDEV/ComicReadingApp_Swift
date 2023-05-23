@@ -166,12 +166,18 @@ class ComicPageViewController: UIViewController, UITableViewDelegate, UITableVie
             btnStartReading.heightAnchor.constraint(equalTo: scrollView.heightAnchor,multiplier: 0.05),
             btnStartReading.widthAnchor.constraint(equalTo: scrollView.widthAnchor, multiplier: 0.3)
         ])
-        btnStartReading.addTarget(self, action: #selector(goToComicContentScreen), for: .touchUpInside)
+        btnStartReading.addTarget(self, action: #selector(goToFirstComicContentScreen), for: .touchUpInside)
 
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let VCComicContent = storyboard?.instantiateViewController(withIdentifier: "VCComicContentID") as! ComicContentViewController
+        VCComicContent.data = data?.chapters[indexPath.row]
+        navigationController?.pushViewController(VCComicContent, animated: true)
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Int(data?.chapter ?? 0)
+        return Int(data?.chapters.count ?? 0)
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -199,10 +205,11 @@ class ComicPageViewController: UIViewController, UITableViewDelegate, UITableVie
         navigationController?.popViewController(animated: true)
     }
     
-    @objc func goToComicContentScreen() {
+    @objc func goToFirstComicContentScreen() {
         let VCComicContent = storyboard?.instantiateViewController(withIdentifier: "VCComicContentID") as! ComicContentViewController
-        VCComicContent.data = data
+        VCComicContent.data = data?.chapters[0]
         navigationController?.pushViewController(VCComicContent, animated: true)
     }
+    
     
 }

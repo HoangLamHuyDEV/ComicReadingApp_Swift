@@ -1,0 +1,21 @@
+{
+  "images" : [
+    {
+      "filename" : "45 hình ảnh về mèo cute, mèo ngáo, mèo láo - Tạo Ảnh Đẹp.jpeg",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

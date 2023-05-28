@@ -115,8 +115,8 @@ class HomeViewController: UIViewController,UICollectionViewDataSource,UICollecti
     }
     
     func createData () {
-        let fisrtChapterComic:[String] = ["https://i.pinimg.com/564x/34/51/f1/3451f1f51b4a4338cf1b1b1b81371e30.jpg","https://i.pinimg.com/564x/bf/8e/ae/bf8eae58f9ee14b39306e509eebe2bf2.jpg","https://i.pinimg.com/564x/e4/19/1d/e4191d3311e1e47365caf9d8f679fbb1.jpg","https://i.pinimg.com/564x/c4/e3/45/c4e3458a7f22700716acd0fb0598f7bc.jpg","https://i.pinimg.com/564x/44/5b/01/445b01db2aa8bf6766db32d04ef418bd.jpg","https://i.pinimg.com/564x/17/42/df/1742df472467d9dca6b2408a62a4a563.jpg"]
-        let secondChapterComic:[String] = ["https://i.pinimg.com/564x/bf/2d/68/bf2d68fb1c1457adcbcf9850ada25014.jpg","https://i.pinimg.com/564x/bf/2d/68/bf2d68fb1c1457adcbcf9850ada25014.jpg","https://i.pinimg.com/564x/34/51/f1/3451f1f51b4a4338cf1b1b1b81371e30.jpg","https://i.pinimg.com/564x/bf/8e/ae/bf8eae58f9ee14b39306e509eebe2bf2.jpg","https://i.pinimg.com/564x/e4/19/1d/e4191d3311e1e47365caf9d8f679fbb1.jpg","https://i.pinimg.com/564x/03/38/55/0338552776f2bcb4fc4aa915fe642833.jpg","https://i.pinimg.com/564x/44/5b/01/445b01db2aa8bf6766db32d04ef418bd.jpg","https://i.pinimg.com/564x/bf/2d/68/bf2d68fb1c1457adcbcf9850ada25014.jpg"]
+        let fisrtChapterComic:[String] = ["https://i.pinimg.com/564x/34/51/f1/3451f1f51b4a4338cf1b1b1b81371e30.jpg","https://i.pinimg.com/564x/bf/8e/ae/bf8eae58f9ee14b39306e509eebe2bf2.jpg","https://i.pinimg.com/564x/e4/19/1d/e4191d3311e1e47365caf9d8f679fbb1.jpg","https://i.pinimg.com/564x/29/ef/20/29ef20b450ebcf335d09780d02ce19fc.jpg","https://i.pinimg.com/564x/c4/e3/45/c4e3458a7f22700716acd0fb0598f7bc.jpg","https://i.pinimg.com/564x/44/5b/01/445b01db2aa8bf6766db32d04ef418bd.jpg","https://i.pinimg.com/564x/29/ef/20/29ef20b450ebcf335d09780d02ce19fc.jpg","https://i.pinimg.com/564x/17/42/df/1742df472467d9dca6b2408a62a4a563.jpg"]
+        let secondChapterComic:[String] = ["https://i.pinimg.com/564x/bf/2d/68/bf2d68fb1c1457adcbcf9850ada25014.jpg","https://i.pinimg.com/564x/bf/2d/68/bf2d68fb1c1457adcbcf9850ada25014.jpg","https://i.pinimg.com/564x/34/51/f1/3451f1f51b4a4338cf1b1b1b81371e30.jpg","https://i.pinimg.com/564x/bf/8e/ae/bf8eae58f9ee14b39306e509eebe2bf2.jpg","https://i.pinimg.com/564x/e4/19/1d/e4191d3311e1e47365caf9d8f679fbb1.jpg","https://i.pinimg.com/564x/29/ef/20/29ef20b450ebcf335d09780d02ce19fc.jpg","https://i.pinimg.com/564x/03/38/55/0338552776f2bcb4fc4aa915fe642833.jpg","https://i.pinimg.com/564x/44/5b/01/445b01db2aa8bf6766db32d04ef418bd.jpg","https://i.pinimg.com/564x/29/ef/20/29ef20b450ebcf335d09780d02ce19fc.jpg","https://i.pinimg.com/564x/bf/2d/68/bf2d68fb1c1457adcbcf9850ada25014.jpg"]
         let fisrtChapter = chapter(id: "1", name: "alololo", images: fisrtChapterComic, updateDate: "12-2-2023")
         let secondChapter = chapter(id: "2", name: "hello world", images: secondChapterComic, updateDate: "2-3-2023")
         let thirdChapter = chapter(id: "3", name: "nothing is matter", images: secondChapterComic, updateDate: "1-1-2020")
@@ -194,12 +194,16 @@ class HomeViewController: UIViewController,UICollectionViewDataSource,UICollecti
         var sixthComic = comic(id: "co6", name: "Truyện 6", rating: 3.8, image: "https://i.pinimg.com/564x/f2/b5/12/f2b5125d6a5c2c7dd635e6ea8cb210cd.jpg")
         sixthComic.chapters.append(fisrtChapter)
         sixthComic.chapters.append(secondChapter)
+        
+        var seventhComic = comic(id: "co7", name: "Truyện 7", rating: 3.1, image: "https://i.pinimg.com/564x/29/ef/20/29ef20b450ebcf335d09780d02ce19fc.jpg")
+        seventhComic.chapters.append(thirdChapter)
         data.append(fisrtComic)
         data.append(secondComic)
         data.append(thirdComic)
         data.append(fourthComic)
         data.append(firthComic)
         data.append(sixthComic)
+        data.append(seventhComic)
         clvUpdatedComic.reloadData()
     }
     

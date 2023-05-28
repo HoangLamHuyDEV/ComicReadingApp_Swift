@@ -4,18 +4,17 @@ import Kingfisher
 class ComicPageViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
   
     var data: comic?
-//    var image: String?
-//    var comicName: String = "Name"
-//    var rating: Float = 0
     let scrollView = UIScrollView()
     let comicImageView = UIImageView()
     let tblChapters = UITableView()
     let chapterView = UIView()
+    let uiButtonView = UIView()
     let lblRating = UILabel()
     let btnOpenChapterView = UIButton()
     let lblComicName = UILabel()
     let lblChapterCount = UILabel()
     let btnExitChapterView = UIButton()
+    let btnReadLastChapter = UIButton()
     let btnStartReading = UIButton()
     var safeAreaInsets: UIEdgeInsets {
         guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
@@ -142,12 +141,21 @@ class ComicPageViewController: UIViewController, UITableViewDelegate, UITableVie
             btnExitChapterView.bottomAnchor.constraint(equalTo: tblChapters.topAnchor, constant: -10),
         ])
         
+        uiButtonView.translatesAutoresizingMaskIntoConstraints = false
+        uiButtonView.contentMode = .scaleAspectFit
+        scrollView.addSubview(uiButtonView)
+        NSLayoutConstraint.activate([
+            uiButtonView.centerYAnchor.constraint(equalTo: scrollView.centerYAnchor),
+            uiButtonView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
+            uiButtonView.heightAnchor.constraint(equalTo: scrollView.heightAnchor, multiplier: 1),
+            uiButtonView.widthAnchor.constraint(equalTo: scrollView.widthAnchor, multiplier: 1)
+        ])
  
         btnOpenChapterView.contentMode = .scaleAspectFit
         btnOpenChapterView.translatesAutoresizingMaskIntoConstraints = false
         btnOpenChapterView.setTitle("Danh sách chương", for: .normal)
         btnOpenChapterView.backgroundColor = .systemBlue
-        scrollView.addSubview(btnOpenChapterView)
+        uiButtonView.addSubview(btnOpenChapterView)
         btnOpenChapterView.addTarget(self, action: #selector(btnOpenChapterViewTapped), for: .touchUpInside)
         NSLayoutConstraint.activate([
             btnOpenChapterView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
@@ -159,7 +167,7 @@ class ComicPageViewController: UIViewController, UITableViewDelegate, UITableVie
         btnStartReading.translatesAutoresizingMaskIntoConstraints = false
         btnStartReading.setTitle("Bắt đầu đọc", for: .normal)
         btnStartReading.backgroundColor = .systemGreen
-        scrollView.addSubview(btnStartReading)
+        uiButtonView.addSubview(btnStartReading)
         NSLayoutConstraint.activate([
             btnStartReading.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor,constant: -1 * scrollView.frame.width/5),
             btnStartReading.centerYAnchor.constraint(equalTo: scrollView.centerYAnchor,constant: 240),
@@ -168,12 +176,23 @@ class ComicPageViewController: UIViewController, UITableViewDelegate, UITableVie
         ])
         btnStartReading.addTarget(self, action: #selector(goToFirstComicContentScreen), for: .touchUpInside)
 
+        btnReadLastChapter.contentMode = .scaleAspectFit
+        btnReadLastChapter.translatesAutoresizingMaskIntoConstraints = false
+        btnReadLastChapter.setTitle("Đọc mới nhất", for: .normal)
+        btnReadLastChapter.backgroundColor = .systemOrange
+        uiButtonView.addSubview(btnReadLastChapter)
+        NSLayoutConstraint.activate([
+            btnReadLastChapter.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor,constant:scrollView.frame.width/5),
+            btnReadLastChapter.centerYAnchor.constraint(equalTo: scrollView.centerYAnchor,constant: 240),
+            btnReadLastChapter.heightAnchor.constraint(equalTo: scrollView.heightAnchor,multiplier: 0.05),
+            btnReadLastChapter.widthAnchor.constraint(equalTo: scrollView.widthAnchor, multiplier: 0.3)
+        ])
+        btnReadLastChapter.addTarget(self, action: #selector(goToLastComicContentScreen), for: .touchUpInside)
+        
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let VCComicContent = storyboard?.instantiateViewController(withIdentifier: "VCComicContentID") as! ComicContentViewController
-        VCComicContent.data = data?.chapters[indexPath.row]
-        navigationController?.pushViewController(VCComicContent, animated: true)
+        goToComicContentScreen(chapter: indexPath.row)
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -191,14 +210,12 @@ class ComicPageViewController: UIViewController, UITableViewDelegate, UITableVie
     
     @objc func btnExitChapterViewTapped() {
         chapterView.isHidden = true
-        btnOpenChapterView.isHidden = false
-        btnStartReading.isHidden = false
+        uiButtonView.isHidden = false
     }
     
     @objc func btnOpenChapterViewTapped() {
         chapterView.isHidden = false
-        btnOpenChapterView.isHidden = true
-        btnStartReading.isHidden = true
+        uiButtonView.isHidden = true
     }
     
     @IBAction func btnReturnHomeScreen(_ sender: UIButton) {
@@ -206,10 +223,20 @@ class ComicPageViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     @objc func goToFirstComicContentScreen() {
-        let VCComicContent = storyboard?.instantiateViewController(withIdentifier: "VCComicContentID") as! ComicContentViewController
-        VCComicContent.data = data?.chapters[0]
-        navigationController?.pushViewController(VCComicContent, animated: true)
+        goToComicContentScreen(chapter: 0)
     }
     
+    @objc func goToLastComicContentScreen() {
+        goToComicContentScreen(chapter: (data!.chapters.count - 1))
+    }
+    
+    func goToComicContentScreen(chapter: Int) {
+        let VCComicContent = storyboard?.instantiateViewController(withIdentifier: "VCComicContentID") as! ComicContentViewController
+        VCComicContent.data = data
+        VCComicContent.chapter = chapter
+        VCComicContent.lblComicName.text = data!.name
+        VCComicContent.lblComicChapter.text = "Chương \(chapter + 1)"
+        navigationController?.pushViewController(VCComicContent, animated: true)
+    }
     
 }

@@ -224,7 +224,7 @@
                                                 </cells>
                                             </collectionView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Truyện nổi bật" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TMI-GR-9HA">
-                                                <rect key="frame" x="8" y="19" width="147" height="20"/>
+                                                <rect key="frame" x="7.9999999999999929" y="19" width="119.33333333333331" height="21.666666666666671"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                                                 <nil key="textColor"/>
@@ -337,9 +337,6 @@
                         <viewLayoutGuide key="safeArea" id="Spf-uH-Oib"/>
                         <color key="backgroundColor" red="0.59215688710000003" green="0.91764706370000004" blue="0.5647059083" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </view>
-                    <connections>
-                        <outlet property="imgLogo" destination="Tqw-wD-GQ2" id="8bW-DT-Lyc"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MVw-e5-Edt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

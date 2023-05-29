@@ -18,6 +18,7 @@ class ComicContentViewController: UIViewController,UITableViewDelegate,UITableVi
     let btnChapterPick = UIButton()
     let btnGoToNextChapter = UIButton()
     let btnGoToPreviousChapter = UIButton()
+    let btnGoBack = UIButton()
     var chapter : Int = 0
     var chapterGoTo: Int = 0
     var data: comic?
@@ -105,7 +106,16 @@ class ComicContentViewController: UIViewController,UITableViewDelegate,UITableVi
         ])
         btnChapterPick.addTarget(self, action: #selector(openChapterPick), for: .touchUpInside)
       
-        
+        btnGoBack.contentMode = .scaleAspectFit
+        btnGoBack.translatesAutoresizingMaskIntoConstraints = false
+        contentView.addSubview(btnGoBack)
+        NSLayoutConstraint.activate([
+            btnGoBack.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            btnGoBack.centerYAnchor.constraint(equalTo: contentView.topAnchor,constant: 70),
+            btnGoBack.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.9),
+            btnGoBack.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 0.05)
+        ])
+        btnGoBack.addTarget(self, action: #selector(goBack), for: .touchUpInside)
         
         tblChapterPick.contentMode = .scaleAspectFit
         tblChapterPick.translatesAutoresizingMaskIntoConstraints = false
@@ -114,7 +124,7 @@ class ComicContentViewController: UIViewController,UITableViewDelegate,UITableVi
         NSLayoutConstraint.activate([
             tblChapterPick.topAnchor.constraint(equalTo: lblChapter.bottomAnchor),
             tblChapterPick.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-            tblChapterPick.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 0.25),
+            tblChapterPick.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 0.2),
             tblChapterPick.widthAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 0.3)
         ])
         tblChapterPick.dataSource = self
@@ -265,5 +275,9 @@ class ComicContentViewController: UIViewController,UITableViewDelegate,UITableVi
             btnGoToNextChapter.isHidden = true
             btnGoToPreviousChapter.isHidden = true
         }
+    }
+    
+    @objc func goBack () {
+        navigationController?.popViewController(animated: true)
     }
 }

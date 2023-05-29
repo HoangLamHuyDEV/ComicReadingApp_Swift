@@ -14,7 +14,7 @@ class HomeViewController: UIViewController,UICollectionViewDataSource,UICollecti
     
     @IBOutlet weak var clvRatingComic: UICollectionView!
     @IBOutlet weak var ViewHome: UIView!
-    let tbxSearch = UITextField(frame: CGRect(x: 50, y: 150, width: 300, height: 50))
+    let tbxSearch = UITextField(frame: CGRect(x: 50, y: 140, width: 300, height: 50))
     var data:[comic] = []
     let insetsSession = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
     let insetsSessionRating = UIEdgeInsets(top: 1, left: 1, bottom: 1, right: 1)

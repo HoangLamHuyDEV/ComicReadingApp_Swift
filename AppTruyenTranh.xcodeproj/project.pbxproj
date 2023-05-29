@@ -72,13 +72,7 @@
 				E5399E2A2A0C6DAB00F5132A /* ComicCollectionViewCell.swift */,
 				E5399E2F2A0C8F9E00F5132A /* RatingComicCollectionViewCell.swift */,
 				E5BBA2622A111154009DBA34 /* ComicPageViewController.swift */,
-				E5BBA2642A139FA0009DBA34 /* ChapterTableViewCell.swift */,
-				E5BBA2652A139FA0009DBA34 /* ChapterTableViewCell.xib */,
 				E5BBA2682A152CAC009DBA34 /* ComicContentViewController.swift */,
-				E5BBA26E2A18AAF2009DBA34 /* ComicTableViewCell.swift */,
-				E5BBA26F2A18AAF2009DBA34 /* ComicTableViewCell.xib */,
-				E5F8E22D2A1CDFCF00305886 /* chapterModel.swift */,
-				E5F8E22F2A1CE08600305886 /* comicModel.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -102,6 +96,7 @@
 		E5AFAD262A09634500D8DF0E /* AppTruyenTranh */ = {
 			isa = PBXGroup;
 			children = (
+				E5EC26082A2342A300BCA1B6 /* Utilities */,
 				E5137A612A0A5E060053C4F1 /* ViewControllers */,
 				E5AFAD272A09634500D8DF0E /* AppDelegate.swift */,
 				E5AFAD292A09634500D8DF0E /* SceneDelegate.swift */,
@@ -111,6 +106,19 @@
 				E5AFAD352A09634600D8DF0E /* Info.plist */,
 			);
 			path = AppTruyenTranh;
+			sourceTree = "<group>";
+		};
+		E5EC26082A2342A300BCA1B6 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				E5BBA26E2A18AAF2009DBA34 /* ComicTableViewCell.swift */,
+				E5BBA26F2A18AAF2009DBA34 /* ComicTableViewCell.xib */,
+				E5BBA2642A139FA0009DBA34 /* ChapterTableViewCell.swift */,
+				E5BBA2652A139FA0009DBA34 /* ChapterTableViewCell.xib */,
+				E5F8E22D2A1CDFCF00305886 /* chapterModel.swift */,
+				E5F8E22F2A1CE08600305886 /* comicModel.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
